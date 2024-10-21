@@ -8,11 +8,15 @@ from torchvision import transforms
 import io
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+import gdown
 
+file_id = '1J8H8ee5RTjNkrDH0S61H5QsaYdIdZS8A'
+gdrive_url = f"https://drive.google.com/uc?id={file_id}"
+model_checkpoint = 'model_checkpoint.pth'
+gdown.download(gdrive_url, model_checkpoint, quiet=False)
 
 app = FastAPI()
-model_checkpoint = "model/health1.pth"
-pre_computed_embeds = "model/comp_embed.npy"
+pre_computed_embeds = "comp_embed.npy"
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 sim_model = models.resnet50(pretrained=True)
 sim_model.to(device)

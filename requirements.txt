@@ -1,1 +1,6 @@
 fastapi[all]
+torch
+torchvision
+pillow
+numpy
+scikit-learn

@@ -23,7 +23,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # Download model checkpoint if it doesn't exist
 if not os.path.exists(model_checkpoint):
     gdown.download(gdrive_url, model_checkpoint, quiet=False)
-
+if not os.path.exists(sim_model_checkpoint):
+    gdown.download(sim_gdrive_url, sim_model_checkpoint,quiet=False)
 # Initialize FastAPI app
 app = FastAPI()
 
